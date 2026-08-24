@@ -254,6 +254,10 @@ export function ApiGetCallWithPagination({
   data,
   toast = false,
   waiting = true,
+  staleTime = 300000,
+  refetchOnWindowFocus = false,
+  refetchOnMount = true,
+  refetchOnReconnect = true,
 }) {
   const dispatch = useDispatch();
   const queryClient = useQueryClient();
@@ -308,8 +312,10 @@ export function ApiGetCallWithPagination({
       }
       return lastPage?.Metadata?.nextLink ? { nextLink: lastPage.Metadata.nextLink } : undefined;
     },
-    staleTime: 300000,
-    refetchOnWindowFocus: false,
+    staleTime,
+    refetchOnWindowFocus,
+    refetchOnMount,
+    refetchOnReconnect,
     retry: retryFn,
   });
 
