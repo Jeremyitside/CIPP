@@ -49,6 +49,12 @@ export const CippTenantResults = (props) => {
             data: { Type: "Tenants" },
             dataKey: "Results",
             queryKey: "ExecAccessChecks-Tenants",
+            // This view is frequently revisited immediately after a queued tenant
+            // check. Always refresh its lightweight cached-results endpoint when
+            // mounting or returning to the tab so a blank/stale table cannot be
+            // mistaken for a missing tenant or failed GDAP relationship.
+            refetchOnMount: "always",
+            refetchOnWindowFocus: true,
           }}
           actions={[
             {
