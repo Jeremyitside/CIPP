@@ -562,6 +562,10 @@ export const CippDataTable = (props) => {
     data: { ...api.data },
     queryKey: queryKey ? queryKey : title,
     waiting: waitingBool,
+    staleTime: api.staleTime,
+    refetchOnMount: api.refetchOnMount,
+    refetchOnWindowFocus: api.refetchOnWindowFocus,
+    refetchOnReconnect: api.refetchOnReconnect,
     ...graphFilterData,
   })
 
